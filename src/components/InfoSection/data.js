@@ -47,7 +47,7 @@ export const homeInfoThree = {
     imgStart : false,
     img : ImgThree,
     alt : 'Lady and phone',
-    dark : false,
+    dark : true,
     primary : true,
     darkText : false
 }
