@@ -91,6 +91,7 @@ export const HeroButtonWrapper = styled.div`
     display : flex;
     flex-direction : column;
     align-items : center;
+    cursor : pointer;
 `;
 export const ArrowForward = styled(MdArrowForward)`
     margin-left : 8px;

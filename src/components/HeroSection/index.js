@@ -7,9 +7,10 @@ const HeroSection = () => {
 
     const [hover, setHover ] = useState(false);
 
+    console.log(hover);
+
     const onHover = () => { 
       setHover(!hover)
-      console.log(hover);
     }
 
   return (
@@ -20,7 +21,7 @@ const HeroSection = () => {
               <HeroP>
                   Sign up for a new account today and receive $250 in credit towards your next payment.
               </HeroP>
-              <HeroButtonWrapper>
+              <HeroButtonWrapper onClick={onHover}>
                   <Button 
                     to='sign-up' 
                     onMouseEnter={onHover} 
