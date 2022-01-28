@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 import { Link as LinkRouter} from 'react-router-dom'
-import { Link as LinkScroll } from 'react-router-dom'
+import { Link as LinkScroll } from 'react-scroll'
 
 export const Nav = styled.nav`
-    background-color : #000;
+    background-color : ${({scrollNav}) => scrollNav ? '#000' : 'transparent'};
     color : #FFF;
-    hieght : 80px;
+    heght : 80px;
+    margin-top : -80px;
     display : flex;
     justify-content : center;
     font-size : 1rem;
@@ -70,7 +71,7 @@ export const NavLinks = styled(LinkScroll)`
     align-items : center;
     text-decoration : none;
     height : 100%;
-    padding : 0 1rem;
+    padding :  1rem;
     cursor : pointer;
 
     &.active {

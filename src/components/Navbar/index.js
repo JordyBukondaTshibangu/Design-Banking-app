@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaBars} from 'react-icons/fa';
+import { animateScroll as scroll} from 'react-scroll'
 import { NavContainer,
   Nav, 
   NavLogo, 
@@ -15,11 +16,25 @@ import SideBar from '../Sidebar';
 
 const Navbar = () => {
   const [ isOpen, setIsOpen ] = useState(false);
+  const [ scrollNav, setScrollNav ] = useState(false);
+
+  const changeNav = () => {
+    if(window.scrollY >= 80){
+      setScrollNav(true)
+    } else {
+      setScrollNav(false)
+    }
+  }
+
+  useEffect(() => {
+      window.addEventListener('scroll', changeNav);
+  }, []);
+  
   return (
   <>
-    <Nav>
+    <Nav scrollNav={scrollNav}>
         <NavContainer>
-            <NavLogo to='/'>TshibsFy</NavLogo>
+            <NavLogo to='/' onClick={() => { scroll.scrollToTop()}}>TshibsFy</NavLogo>
             <MobileIcon onClick={() => setIsOpen(!isOpen)}>
               <FaBars />
             </MobileIcon>
@@ -28,23 +43,20 @@ const Navbar = () => {
             }
             <NavMenu>
               <NavItem>
-                <NavLinks to='about'>About Us</NavLinks>
+                <NavLinks spy={true} smooth='true' to='about'>About Us</NavLinks>
               </NavItem>
               <NavItem>
-                <NavLinks to='services'>Services</NavLinks>
+                <NavLinks spy={true} smooth='true' to='services'>Services</NavLinks>
               </NavItem>
               <NavItem>
-                <NavLinks to='discover'>Discover</NavLinks>
+                <NavLinks spy={true} smooth='true' to='discover'>Discover</NavLinks>
               </NavItem>
               <NavItem>
-                <NavLinks to='contact-us'>Contact Us</NavLinks>
-              </NavItem>
-              <NavItem>
-                <NavLinks to='sign-up'>Sign Up</NavLinks>
+                <NavLinks spy={true} smooth='true' to='contactus'>Contact Us</NavLinks>
               </NavItem>
             </NavMenu>
             <NavButton>
-              <NavButonLink to='sign-in'>Sign In</NavButonLink>
+              <NavButonLink  to='/sign-in'>Sign In</NavButonLink>
             </NavButton>
         </NavContainer>
     </Nav>
